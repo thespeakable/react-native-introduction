@@ -9,6 +9,7 @@ import {
   ScrollView,
   Image
 } from 'react-native';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scrollview'
 import picBird from './assets/bird_view.jpg'
 
 export default class FirstApp extends Component {
@@ -35,7 +36,8 @@ export default class FirstApp extends Component {
 
   render() {
     return (
-    <View style = {styles.container}>
+    <KeyboardAwareScrollView style = {styles.container}>
+        <View>
         {/*holds the code to the topnav area*/}
         <View style ={styles.topNav}>
           <Image source = {picBird} style = {styles.pic}>
@@ -47,23 +49,22 @@ export default class FirstApp extends Component {
         <View style = {styles.mainBody}>
           <Text style = {[{fontSize:20},{flexDirection:'row'}]}>Log In </Text>
           <ScrollView>
-          <TextInput 
-            style = {styles.inputText} 
+          <TextInput
+            style = {styles.inputText}
             onPress = {()=>this.inputHandler('rgba(0, 97, 255,0.7)')}
             onChangeText = {(text1)=>this.setState({text1})}/>
           <TextInput
-            style = {styles.inputText} 
+            style = {styles.inputText}
             onPress = {()=>this.inputHandler('rgba(0, 97, 255,0.7)')}
             onChangeText = {(text2)=>this.setState({text2})}/>
-          <Text>
-          {this.state.text1}{this.state.text2}
-          </Text>
+
           </ScrollView>
         </View>
         {/*holds the code for the bottom nav*/}
         <View style = {styles.bottomNav}>
         </View>
-      </View>
+        </View>
+      </KeyboardAwareScrollView>
     );
   }
 }
